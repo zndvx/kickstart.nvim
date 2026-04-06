@@ -274,7 +274,9 @@ rtp:prepend(lazypath)
 -- NOTE: Here is where you install your plugins.
 require('lazy').setup({
   -- NOTE: Plugins can be added via a link or github org/name. To run setup automatically, use `opts = {}`
-  { 'NMAC427/guess-indent.nvim', opts = {} },
+  { 'NMAC427/guess-indent.nvim', opts = {
+    auto_cmd = false,
+  } },
 
   -- Alternatively, use `config = function() ... end` for full control over the configuration.
   -- If you prefer to call `setup` explicitly, use:
@@ -816,17 +818,45 @@ require('lazy').setup({
       signature = { enabled = true },
     },
   },
-  -- Jetbrains Inspired theme
+  -- Black Metal Theme
   {
-    'nickkadutskyi/jb.nvim',
+    'metalelf0/black-metal-theme-neovim',
     lazy = false,
     priority = 1000,
-    opts = {},
     config = function()
-      -- require("jb").setup({transparent = true})
-      vim.cmd 'colorscheme jb'
+      require('black-metal').setup {
+        theme = 'bathory',
+      }
+      require('black-metal').load()
     end,
   },
+  -- Oxocarbon theme
+  -- {
+  --   'nyoom-engineering/oxocarbon.nvim',
+  --   lazy = false,
+  --   priority = 1000,
+  --   opts = {},
+  --   config = function() vim.cmd 'colorscheme oxocarbon' end,
+  -- },
+  -- Kanagawa theme
+  -- {
+  --   'rebelot/kanagawa.nvim',
+  --   lazy = false,
+  --   priority = 1000,
+  --   opts = {},
+  --   config = function() vim.cmd 'colorscheme kanagawa-dragon' end,
+  -- },
+  -- Jetbrains Inspired theme
+  -- {
+  --   'nickkadutskyi/jb.nvim',
+  --   lazy = false,
+  --   priority = 1000,
+  --   opts = {},
+  --   config = function()
+  --     -- require("jb").setup({transparent = true})
+  --     vim.cmd 'colorscheme jb'
+  --   end,
+  -- },
   -- My custom github theme
   -- {
   --   'projekt0n/github-nvim-theme',
@@ -838,7 +868,7 @@ require('lazy').setup({
   --       -- ...
   --     }
   --
-  --     vim.cmd 'colorscheme github_dark_dimmed'
+  --     vim.cmd 'colorscheme github_dark_high_contrast'
   --   end,
   -- },
 
