@@ -28,6 +28,8 @@ local config = {
     java = {},
   },
 
+  on_attach = function(client, bufnr) require('jdtls').setup_dap { hotcodereplace = 'auto' } end,
+
   -- This sets the `initializationOptions` sent to the language server
   -- If you plan on using additional eclipse.jdt.ls plugins like java-debug
   -- you'll need to set the `bundles`
