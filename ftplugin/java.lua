@@ -1,5 +1,8 @@
 -- See `:help vim.lsp.start` for an overview of the supported `config` options.
 local lombok_path = vim.fn.expand '$HOME/.local/share/java/lombok.jar'
+local bundles = {
+  vim.fn.glob('/home/zndvx/.m2/repository/com/microsoft/java/com.microsoft.java.debug.plugin/0.53.2/com.microsoft.java.debug.plugin-0.53.2.jar', 1),
+}
 local config = {
   name = 'jdtls',
 
@@ -33,7 +36,7 @@ local config = {
   --
   -- If you don't plan on any eclipse.jdt.ls plugins you can remove this
   init_options = {
-    bundles = {},
+    bundles = bundles,
   },
 }
 require('jdtls').start_or_attach(config)

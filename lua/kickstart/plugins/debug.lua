@@ -106,5 +106,24 @@ return {
         detached = vim.fn.has 'win32' == 0,
       },
     }
+
+    dap.adapters.java = function(callback)
+      vim.lsp.buf.execute_command { command = 'vscode.java.startDebugSession' }
+      callback {
+        type = 'server',
+        host = '127.0.0.1',
+        port = 5005,
+      }
+    end
+
+    dap.configurations.java = {
+      {
+        type = 'java',
+        name = 'Debug (Attach)',
+        request = 'attach',
+        hostName = '127.0.0.1',
+        port = 5005,
+      },
+    }
   end,
 }
